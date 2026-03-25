@@ -221,9 +221,6 @@
         style="height: 75vh; display: flex; flex-direction: column"
       >
         <div class="rec-header-fixed">
-          <button class="rec-close-btn" onclick="App.Utils.closeAll()">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
           <div class="rec-title-row">
             <h2 class="rec-main-title">必買必吃攻略</h2>
           </div>
@@ -235,12 +232,9 @@
       </div>
     </div>
 
-    <!-- Finance Modal [v2.8.2] 分帳整合版 — 重新設計佈局 + 修正設定彈窗 -->
-    <div class="modal-overlay" id="financeModal">
-      <div class="modal-card fin-modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <!-- Finance Modal [v2.8.3] 移除 X 按鈕，點背景關閉 -->
+    <div class="modal-overlay" id="financeModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card fin-modal-card" onclick="event.stopPropagation()">
 
         <!-- ★ 置頂固定區：總花費 + 標籤列 + 齒輪按鈕 -->
         <div class="fin-sticky-header">
@@ -376,11 +370,8 @@
     </div>
 
     <!-- Phrase / Language Modal -->
-    <div class="modal-overlay" id="phraseModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="phraseModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">語言助手</div>
         <div class="modal-content-scroll">
           <div
@@ -528,11 +519,8 @@
     </div>
 
     <!-- Note Modal -->
-    <div class="modal-overlay" id="noteModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="noteModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">編輯筆記</div>
         <div class="modal-content-scroll">
           <textarea
@@ -567,11 +555,8 @@
     </div>
 
     <!-- Weather Modal -->
-    <div class="modal-overlay" id="weatherModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="weatherModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">旅程天氣預報</div>
         <div class="modal-content-scroll">
           <div id="weather-modal-content"></div>
@@ -580,11 +565,8 @@
     </div>
 
     <!-- Info Modal -->
-    <div class="modal-overlay" id="infoModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="infoModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">行前須知</div>
         <div class="modal-content-scroll">
           <div id="info-list-container" class="info-list"></div>
@@ -593,11 +575,8 @@
     </div>
 
     <!-- [v2.9] Currency Converter Modal — 方案D 漸層基準區 + 下拉切換 -->
-    <div class="modal-overlay" id="converterModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="converterModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">即時匯率</div>
         <div class="modal-content-scroll">
           <div id="currency-container">
@@ -608,11 +587,8 @@
     </div>
 
     <!-- Settings Modal [Ver2] 新增「清除完成標記」按鈕 -->
-    <div class="modal-overlay" id="settingsModal">
-      <div class="modal-card">
-        <button class="modal-close" onclick="App.Utils.closeAll()">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+    <div class="modal-overlay" id="settingsModal" onclick="App.Utils.closeAll()">
+      <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">資料管理</div>
         <div class="modal-content-scroll">
           <div
