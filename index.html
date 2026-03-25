@@ -27,7 +27,7 @@
 
     <!-- App Entry (Vite 會自動注入 CSS 和 JS) -->
     <script type="module" crossorigin src="/assets/index-D1kXjXco.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style-BCN7YFau.css">
+    <link rel="stylesheet" crossorigin href="/assets/style-DjtZ_XaQ.css">
   </head>
   <body>
     <!-- =========================================
@@ -235,7 +235,7 @@
       </div>
     </div>
 
-    <!-- Finance Modal [v2.8.1] 分帳整合版 — sticky header + 設定獨立彈窗 -->
+    <!-- Finance Modal [v2.8.2] 分帳整合版 — 重新設計佈局 + 修正設定彈窗 -->
     <div class="modal-overlay" id="financeModal">
       <div class="modal-card fin-modal-card">
         <button class="modal-close" onclick="App.Utils.closeAll()">
@@ -246,12 +246,12 @@
         <div class="fin-sticky-header">
           <div class="fin-total-card-compact">
             <div class="fin-total-left">
-              <div class="fin-total-label">總花費</div>
+              <div class="fin-total-label"><i class="fa-solid fa-wallet" style="margin-right:4px"></i>總花費</div>
               <div class="fin-total-row">
                 <div id="fin-total" class="fin-total-number">0</div>
                 <select id="fin-total-switch" onchange="App.Finance.switchTotalCurrency(this.value)" class="fin-total-currency-select">
                   <option value="TWD" style="color:#333">TWD</option>
-                  <option value="VND" style="color:#333">VND</option>
+                  <option value="KRW" style="color:#333">KRW</option>
                   <option value="USD" style="color:#333">USD</option>
                 </select>
               </div>
@@ -271,7 +271,7 @@
 
           <!-- 語音輸入 -->
           <button class="voice-btn" id="fin-voice-btn" onclick="App.Finance.startVoiceInput()">
-            <i class="fa-solid fa-microphone"></i> 按下說話 (例：2月10號晚餐越南盾50萬元)
+            <i class="fa-solid fa-microphone"></i> 按下說話 (例：3月14號午餐韓元5萬元)
           </button>
 
           <!-- 記帳輸入表單 -->
@@ -292,7 +292,7 @@
               <div style="flex:0 0 140px">
                 <label class="fin-form-label">幣別</label>
                 <select id="fin-currency" class="fin-form-select" onchange="App.Finance.updateInputHelper()">
-                  <option value="VND" selected>VND (越南盾)</option>
+                  <option value="KRW" selected>KRW (韓元)</option>
                   <option value="TWD">TWD (台幣)</option>
                   <option value="USD">USD (美金)</option>
                 </select>
@@ -335,40 +335,40 @@
           <!-- 記帳列表 -->
           <div id="fin-list"></div>
         </div>
-      </div>
-    </div>
 
-    <!-- ★ [v2.8.1] 設定獨立彈窗 -->
-    <div class="fin-settings-overlay" id="finSettingsOverlay" onclick="if(event.target===this)App.Finance.closeSettings()">
-      <div class="fin-settings-modal">
-        <div class="fin-settings-modal-header">
-          <h3><i class="fa-solid fa-users-gear"></i> 成員管理 & 設定</h3>
-          <button class="fin-settings-close-btn" onclick="App.Finance.closeSettings()">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div class="fin-settings-modal-body">
-          <label class="fin-form-label">成員列表</label>
-          <div id="fin-member-list"></div>
-          <div class="fin-add-member-row">
-            <input type="text" id="fin-new-member-input" class="fin-form-input" placeholder="新增成員名稱..." style="flex:1" />
-            <button onclick="App.Finance.addMember()" class="fin-add-member-btn">
-              <i class="fa-solid fa-user-plus"></i>
-            </button>
-          </div>
-
-          <div style="margin-top:20px">
-            <label class="fin-form-label">海外刷卡手續費</label>
-            <div class="fin-fee-row">
-              <label class="fin-split-toggle-label">
-                <span>啟用手續費</span>
-                <input type="checkbox" id="fin-fee-toggle" onchange="App.Finance.updateSettings('applyFee', this.checked)" />
-                <span class="fin-toggle-slider"></span>
-              </label>
+        <!-- ★ [v2.8.2] 設定彈窗 — 移入 financeModal 內部解決 z-index 問題 -->
+        <div class="fin-settings-overlay" id="finSettingsOverlay" onclick="if(event.target===this)App.Finance.closeSettings()">
+          <div class="fin-settings-modal">
+            <div class="fin-settings-modal-header">
+              <h3><i class="fa-solid fa-users-gear"></i> 成員管理 & 設定</h3>
+              <button class="fin-settings-close-btn" onclick="App.Finance.closeSettings()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
-            <div class="fin-fee-row" style="margin-top:8px">
-              <span class="fin-form-label" style="margin-bottom:0">手續費 %</span>
-              <input type="number" id="fin-fee-rate" class="fin-form-input" style="width:80px;text-align:center" value="1.5" step="0.1" onchange="App.Finance.updateSettings('feeRate', parseFloat(this.value))" />
+            <div class="fin-settings-modal-body">
+              <label class="fin-form-label">成員列表</label>
+              <div id="fin-member-list"></div>
+              <div class="fin-add-member-row">
+                <input type="text" id="fin-new-member-input" class="fin-form-input" placeholder="新增成員名稱..." style="flex:1" />
+                <button onclick="App.Finance.addMember()" class="fin-add-member-btn">
+                  <i class="fa-solid fa-user-plus"></i>
+                </button>
+              </div>
+
+              <div style="margin-top:20px">
+                <label class="fin-form-label">海外刷卡手續費</label>
+                <div class="fin-fee-row">
+                  <label class="fin-split-toggle-label">
+                    <span>啟用手續費</span>
+                    <input type="checkbox" id="fin-fee-toggle" onchange="App.Finance.updateSettings('applyFee', this.checked)" />
+                    <span class="fin-toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="fin-fee-row" style="margin-top:8px">
+                  <span class="fin-form-label" style="margin-bottom:0">手續費 %</span>
+                  <input type="number" id="fin-fee-rate" class="fin-form-input" style="width:80px;text-align:center" value="1.5" step="0.1" onchange="App.Finance.updateSettings('feeRate', parseFloat(this.value))" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
