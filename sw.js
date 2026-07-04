@@ -4,7 +4,8 @@
    確保每次部署後自動載入最新版本
    ========================================= */
 
-const CACHE_NAME = 'outo-v2.6';
+// [C4] 每次發版請同步更新版本號（與 package.json 對齊），確保舊快取被清除
+const CACHE_NAME = 'outo-v2.13';
 
 // 需要預快取的核心資源
 const PRE_CACHE = [
