@@ -26,8 +26,8 @@
     />
 
     <!-- App Entry (Vite 會自動注入 CSS 和 JS) -->
-    <script type="module" crossorigin src="/assets/index-CYdRHEZA.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/style-BTSJzR9p.css">
+    <script type="module" crossorigin src="/assets/index--0-uY08D.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/style-B3gey6kN.css">
   </head>
   <body>
     <!-- =========================================
@@ -244,9 +244,7 @@
               <div class="fin-total-row">
                 <div id="fin-total" class="fin-total-number">0</div>
                 <select id="fin-total-switch" onchange="App.Finance.switchTotalCurrency(this.value)" class="fin-total-currency-select">
-                  <option value="TWD" style="color:#333">TWD</option>
-                  <option value="KRW" style="color:#333">KRW</option>
-                  <option value="USD" style="color:#333">USD</option>
+                  <!-- [C1] 選項由 Finance._populateCurrencyOptions() 依設定產生 -->
                 </select>
               </div>
             </div>
@@ -265,7 +263,7 @@
 
           <!-- 語音輸入 -->
           <button class="voice-btn" id="fin-voice-btn" onclick="App.Finance.startVoiceInput()">
-            <i class="fa-solid fa-microphone"></i> 按下說話 (例：3月14號午餐韓元5萬元)
+            <i class="fa-solid fa-microphone"></i> 按下說話
           </button>
 
           <!-- 記帳輸入表單 -->
@@ -286,9 +284,7 @@
               <div style="flex:0 0 140px">
                 <label class="fin-form-label">幣別</label>
                 <select id="fin-currency" class="fin-form-select" onchange="App.Finance.updateInputHelper()">
-                  <option value="KRW" selected>KRW (韓元)</option>
-                  <option value="TWD">TWD (台幣)</option>
-                  <option value="USD">USD (美金)</option>
+                  <!-- [C1] 選項由 Finance._populateCurrencyOptions() 依設定產生 -->
                 </select>
               </div>
               <div style="flex:1">
@@ -321,8 +317,27 @@
               <div id="fin-split-members" class="fin-split-members"></div>
             </div>
 
-            <button onclick="App.Finance.add()" class="fin-add-btn">
+            <button id="fin-add-btn" onclick="App.Finance.add()" class="fin-add-btn">
               <i class="fa-solid fa-plus"></i> 新增紀錄
+            </button>
+            <!-- [A2] 編輯模式的取消按鈕 -->
+            <button
+              id="fin-cancel-edit"
+              onclick="App.Finance.cancelEdit()"
+              style="
+                display: none;
+                width: 100%;
+                padding: 12px;
+                background: #eceff1;
+                color: #546e7a;
+                border: none;
+                border-radius: 12px;
+                font-size: 0.95rem;
+                font-weight: 700;
+                margin-top: 8px;
+              "
+            >
+              取消編輯
             </button>
           </div>
 
@@ -407,9 +422,7 @@
                   outline: none;
                 "
               >
-                <option value="vi" selected>🇻🇳 越南語 (Tiếng Việt)</option>
-                <option value="en">🇺🇸 英文 (English)</option>
-                <option value="zh-TW">🇹🇼 繁體中文</option>
+                <!-- [C1] 選項由 Language.open() 依設定產生 -->
               </select>
             </div>
 
